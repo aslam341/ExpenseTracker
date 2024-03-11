@@ -19,6 +19,9 @@ public class Main {
         ExpenseManager expenseManager = new ExpenseManager();
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("ExpenseTracker has started!\nEnter names and expense in the following format:\n"
+                    + "Alice,10.0\nBob,20.5\nCharlie,43.76\nBob,31.42\netc...\n"
+                    + "Press enter without typing anything once you are done adding all expenses for processing\n\n");
             String line;
             while ((line = br.readLine()) != null && !line.isEmpty()) {
                 String[] parts = line.split(",");
