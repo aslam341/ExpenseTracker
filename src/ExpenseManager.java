@@ -5,13 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Manages expenses and calculates transactions to settle debts among friends.
+ */
 public class ExpenseManager {
     private Map<String, BigDecimal> expenses;
 
+    /**
+     * Initializes the ExpenseManager with an empty expenses map.
+     */
     public ExpenseManager() {
         expenses = new HashMap<>();
     }
 
+    /**
+     * Adds an expense for a friend.
+     *
+     * @param expense The expense to be added.
+     */
     public void addExpense(Expense expense) {
         BigDecimal zeroValue = new BigDecimal(0.00);
         BigDecimal currentExpense = expenses.getOrDefault(expense.getName(), zeroValue);
@@ -19,6 +30,11 @@ public class ExpenseManager {
         expenses.put(expense.getName(), totalExpense);
     }
 
+    /**
+     * Calculates transactions to settle debts among friends and returns a list of transactions.
+     *
+     * @return A list of transactions.
+     */
     public List<String> settleExpense() {
         List<String> transactions = new ArrayList<>();
         List<String> borrowers = new ArrayList<>();
@@ -26,16 +42,21 @@ public class ExpenseManager {
 
         BigDecimal totalSumOfExpenses = calculateTotalExpenses();
         int numberOfPeople = expenses.size();
-        BigDecimal amountForEachPerson = totalSumOfExpenses.divide(new BigDecimal(numberOfPeople),
+        BigDecimal avgExpenseForEachPerson = totalSumOfExpenses.divide(new BigDecimal(numberOfPeople),
                 2, RoundingMode.HALF_UP);
 
-        categorizeLendersAndBorrowers(lenders, borrowers, amountForEachPerson);
+        categorizeLendersAndBorrowers(lenders, borrowers, avgExpenseForEachPerson);
 
         processTransactions(transactions, lenders, borrowers);
 
         return transactions;
     }
 
+    /**
+     * Calculates the total sum of expenses for all friends.
+     *
+     * @return The total sum of expenses.
+     */
     private BigDecimal calculateTotalExpenses() {
         BigDecimal totalSumOfExpenses = BigDecimal.valueOf(0.00);
         for (BigDecimal cost : expenses.values()) {
@@ -44,12 +65,19 @@ public class ExpenseManager {
         return totalSumOfExpenses;
     }
 
+    /**
+     * Categorizes friends into lenders and borrowers based on their balance.
+     *
+     * @param lenders The list of lenders.
+     * @param borrowers The list of borrowers.
+     * @param avgExpenseForEachPerson The average amount spent by each person.
+     */
     private void categorizeLendersAndBorrowers(List<String> lenders,
                                                List<String> borrowers,
-                                               BigDecimal amountForEachPerson) {
+                                               BigDecimal avgExpenseForEachPerson) {
         BigDecimal zeroValue = new BigDecimal(0.00);
         for (Map.Entry<String, BigDecimal> entry : expenses.entrySet()) {
-            BigDecimal balanceOwed = entry.getValue().subtract(amountForEachPerson);
+            BigDecimal balanceOwed = entry.getValue().subtract(avgExpenseForEachPerson);
             expenses.put(entry.getKey(), balanceOwed);
             if (balanceOwed.compareTo(zeroValue) == 1) {
                 lenders.add(entry.getKey());
@@ -59,6 +87,13 @@ public class ExpenseManager {
         }
     }
 
+    /**
+     * Processes transactions between lenders and borrowers.
+     *
+     * @param transactions The list to store transactions.
+     * @param lenders The list of lenders.
+     * @param borrowers The list of borrowers.
+     */
     private void processTransactions(List<String> transactions, List<String> lenders, List<String> borrowers) {
         BigDecimal zeroValue = BigDecimal.valueOf(0.00);
         for (String borrower : borrowers) {
