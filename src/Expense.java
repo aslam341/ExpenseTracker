@@ -1,8 +1,10 @@
+import java.math.BigDecimal;
+
 public class Expense {
     private String name;
-    private Double cost;
+    private BigDecimal cost;
 
-    public Expense(String name, Double cost) {
+    public Expense(String name, BigDecimal cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -11,7 +13,7 @@ public class Expense {
         return this.name;
     }
 
-    public Double getCost() {
+    public BigDecimal getCost() {
         return this.cost;
     }
 }
