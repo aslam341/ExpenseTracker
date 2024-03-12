@@ -1,5 +1,3 @@
-package test;
-
 import main.Expense;
 import main.ExpenseManager;
 import org.junit.jupiter.api.Test;

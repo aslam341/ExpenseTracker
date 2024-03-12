@@ -1,0 +1,51 @@
+# Challenge 1:
+
+Any Java version above 11.0.17 should work. Tested on Oracle OpenJDK 11.0.17 and 19.0.1 SDKs successfully.
+
+## Installation Guide (recommended)
+
+### 1. Clone the repository
+```git clone https://github.com/aslam341/ExpenseTracker.git```
+
+### 2. Open folder with IntelliJ IDEA IDE
+Ensure project settings has correct Java SDK.
+
+### 3. Run main or test
+Click on "run Main.main()" when you hover your mouse over the file in src/main/Main in project directory.
+Junit5 is required for tests.
+
+## Installation Guide (using terminal)
+
+### 1. Clone the repository
+```git clone https://github.com/aslam341/ExpenseTracker.git```
+
+### 2. Change into the project directory
+```cd ExpenseTracker```
+
+### 3. Compile the program in a separate 'classes' directory
+```javac src/main/*.java -d classes```
+
+### 4. Run the program
+```java -cp classes main.Main```
+
+### 5. Follow the instructions from the program
+
+### (If you have trouble compiling the program or running the program, you can alternatively run the run.sh script to quickly get the program running)
+
+
+## Assumptions
+1. A difference of +-$0.005 owed does not matter too much. In the first example test case, for the following input:
+
+    Ali,40.105 
+
+    Bob,40.105 
+
+    Charlie,10
+
+    The output should be that Charlie pays them to Ali and Bob, which would be $10.035, but we shall round it down to $10.03 each.
+
+
+## Architecture Decisions
+
+### 1. Use of BigDecimal instead of Double to represent currency
+For higher precision values, which is especially important when dealing with currency.
