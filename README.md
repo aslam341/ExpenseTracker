@@ -47,5 +47,5 @@ Junit5 is required for tests.
 
 ## Architecture Decisions
 
-### 1. Use of BigDecimal instead of Double to represent currency
+1. Use of BigDecimal instead of Double to represent currency
 For higher precision values, which is especially important when dealing with currency.
