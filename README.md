@@ -11,8 +11,12 @@ Any Java version above 11.0.17 should work. Tested on Oracle OpenJDK 11.0.17 and
 Ensure project settings has correct Java SDK.
 
 ### 3. Run main or test
-Click on "run Main.main()" when you hover your mouse over the file in src/main/Main in project directory.
-Junit5 is required for tests.
+    a. Main
+    Click on "Run Main.main()" when you hover your mouse over the file in src/main/Main in project directory.
+
+    b. Test
+    Junit5 is required for tests.
+    Click on "Run "All Tests" when you hover your mouse over the file in src/test in project directory.
 
 ## Installation Guide (using terminal)
 
@@ -53,7 +57,7 @@ For higher precision values, which is especially important when dealing with cur
 
 # Challenge 2:
 
-![hotel_erd.png](hotel_erd.png)
+![hotel_erd.jpg](hotel_erd.jpg)
 
 #### The above entity-relationship diagram follows Chen's notation.
 
