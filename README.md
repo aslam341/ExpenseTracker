@@ -30,7 +30,7 @@ Junit5 is required for tests.
 
 ### 5. Follow the instructions from the program
 
-### (If you have trouble compiling the program or running the program, you can alternatively run the run.sh script to quickly get the program running)
+#### (If you have trouble compiling the program or running the program, you can alternatively run the run.sh script to quickly get the program running)
 
 
 ## Assumptions
@@ -49,3 +49,17 @@ Junit5 is required for tests.
 
 1. Use of BigDecimal instead of Double to represent currency
 For higher precision values, which is especially important when dealing with currency.
+
+
+# Challenge 2:
+
+![hotel_erd.png](hotel_erd.png)
+
+#### The above entity-relationship diagram follows Chen's notation.
+
+## Assumptions
+1. Each guest can make multiple bookings.
+2. Each room can be booked in multiple times by different guests.
+3. There are no overlapping bookings for a room.
+4. A guest's period of stay is throughout the duration of the booking.
+5. Different rooms can have different amenities (e.g. Jacuzzi tubs, high speed wifi, private balcony, accessibility features like grab bars, etc...).
